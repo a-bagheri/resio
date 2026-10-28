@@ -1,0 +1,7 @@
+node_modules
+.next
+.next-export/
+out
+*.tsbuildinfo
+.DS_Store
+.claude/

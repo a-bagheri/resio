@@ -1,0 +1,59 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Configure basePath
+        id: cfg
+        run: |
+          REPO_NAME="${GITHUB_REPOSITORY#*/}"
+          # project sites live under /<repo>; user sites (<user>.github.io) live at the root
+          if [[ "$REPO_NAME" == *.github.io ]]; then
+            echo "base=" >> "$GITHUB_OUTPUT"
+          else
+            echo "base=/$REPO_NAME" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build static export
+        run: npm run build:static
+        env:
+          STATIC_EXPORT: "1"
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.cfg.outputs.base }}
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .next-export
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

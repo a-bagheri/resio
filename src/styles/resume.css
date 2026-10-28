@@ -1,0 +1,287 @@
+/* ============================================================
+   Resume document styles (rd-*) — used by preview and print
+   ============================================================ */
+
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/Vazirmatn-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/Vazirmatn-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/Vazirmatn-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/Vazirmatn-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.rd-root {
+  font-family: var(--font);
+  font-size: var(--fs);
+  line-height: var(--lh);
+  color: #1a1a1a;
+  background: #fff;
+  text-align: start;
+}
+
+/* ---------- page geometry (A4 / Letter) ---------- */
+.rd-page {
+  position: relative;
+  width: 210mm;
+  min-height: 297mm;
+  background: #fff;
+}
+.rd-page[data-page="letter"] {
+  width: 216mm;
+  min-height: 279mm;
+}
+
+/* ---------- header variants ---------- */
+.rd-header { margin-bottom: calc(var(--sec-gap) * 0.8); }
+
+.rd-name {
+  font-size: calc(var(--fs-h) * 1.6);
+  font-weight: 700;
+  color: var(--c-primary);
+  line-height: 1.2;
+  margin: 0;
+}
+.rd-title {
+  font-size: calc(var(--fs) * 1.18);
+  color: var(--c-secondary);
+  margin: 0.25em 0 0;
+}
+
+.rd-hbanner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6mm;
+  padding: 4mm 5mm;
+  background: color-mix(in srgb, var(--c-primary) 7%, white);
+  border-bottom: 2px solid var(--c-accent);
+}
+.rd-hbanner-main { flex: 1; }
+
+.rd-hcentered {
+  text-align: center;
+  border-bottom: 2px solid var(--c-accent);
+  padding-bottom: 4mm;
+}
+.rd-hcentered .rd-photo { margin-inline: auto; margin-bottom: 3mm; }
+
+.rd-hsplit {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 6mm;
+  border-bottom: 2px solid var(--c-accent);
+  padding-bottom: 3mm;
+}
+.rd-hsplit-contact { text-align: end; max-width: 55%; }
+
+.rd-hminimal { border-bottom: 2px solid var(--c-accent); padding-bottom: 3mm; }
+
+.rd-hsidebar {
+  display: flex;
+  gap: 6mm;
+  align-items: stretch;
+  margin: -5mm -5mm 0; /* pull into padding */
+  margin-bottom: calc(var(--sec-gap) * 0.6);
+}
+.rd-hside-side {
+  color: #fff;
+  padding: 5mm;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3mm;
+  min-width: 45mm;
+  background: var(--c-primary) !important;
+}
+.rd-hside-side .rd-contact { color: #fff; flex-direction: column; align-items: center; }
+.rd-hside-side .rd-contact .rd-cdot { visibility: hidden; height: 0; }
+.rd-hside-side .rd-link { color: #fff; text-decoration: underline; }
+.rd-hside-main {
+  padding-top: 5mm;
+  padding-inline-end: 5mm;
+  flex: 1;
+}
+
+.rd-photo {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--c-accent);
+  flex-shrink: 0;
+}
+
+/* ---------- contact row ---------- */
+.rd-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3em 0.7em;
+  align-items: center;
+  margin-top: 0.7em;
+  font-size: calc(var(--fs) * 0.92);
+  color: var(--c-secondary);
+}
+.rd-cdot { opacity: 0.55; }
+.rd-link { color: inherit; text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--c-accent) 45%, transparent); }
+
+/* ---------- sections ---------- */
+.rd-main { padding: 0; }
+
+.rd-heading {
+  font-size: var(--fs-h);
+  font-weight: 700;
+  color: var(--c-primary);
+  margin: 0 0 0.55em;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.rd-root[dir="rtl"] .rd-heading { letter-spacing: 0; text-transform: none; }
+
+.rd-section[data-x] { color: inherit; }
+.rd-root[data-sep="line"] .rd-heading {
+  border-bottom: 1.5px solid color-mix(in srgb, var(--c-primary) 25%, transparent);
+  padding-bottom: 0.25em;
+}
+.rd-root[data-sep="underline"] .rd-heading::after {
+  content: "";
+  display: block;
+  width: 12mm;
+  border-bottom: 2.5px solid var(--c-accent);
+  padding-top: 2px;
+}
+.rd-root[data-sep="none"] .rd-heading { border: none; }
+
+/* ---------- entries ---------- */
+.rd-entries { display: flex; flex-direction: column; gap: 0.8em; }
+.rd-compact { gap: 0.55em; }
+
+.rd-entry-top { display: flex; flex-direction: column; }
+.rd-entry-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1em;
+}
+.rd-ehead-main { font-weight: 400; }
+.rd-ehead-main strong { font-weight: 600; color: var(--c-primary); }
+.rd-ehead-sep { opacity: 0.6; }
+.rd-date {
+  color: var(--c-secondary);
+  font-size: calc(var(--fs) * 0.92);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.rd-sub {
+  color: var(--c-secondary);
+  font-size: calc(var(--fs) * 0.95);
+}
+.rd-desc { margin: 0.2em 0 0; }
+.rd-meta-row { margin: 0.25em 0 0; font-size: calc(var(--fs) * 0.95); }
+.rd-meta-row em { color: var(--c-secondary); font-style: normal; font-weight: 600; }
+
+.rd-bullets {
+  margin: 0.25em 0 0;
+  padding-inline-start: 1.25em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+}
+.rd-bullets li::marker { color: var(--c-accent); }
+
+.rd-summary { margin: 0; white-space: pre-wrap; }
+
+/* chips */
+.rd-chips { display: inline; }
+.rd-chip {
+  display: inline-block;
+  border: 1px solid color-mix(in srgb, var(--c-accent) 40%, transparent);
+  color: var(--c-primary);
+  border-radius: 3px;
+  padding: 0 0.35em;
+  margin: 0.05em 0.1em;
+  font-size: calc(var(--fs) * 0.88);
+  background: color-mix(in srgb, var(--c-accent) 6%, white);
+}
+.rd-chip[data-icon="n"] { border-color: transparent; background: transparent; padding: 0; }
+
+/* ---------- skills / languages / references grid ---------- */
+.rd-skills2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.2em 3em;
+}
+.rd-skillcat { break-inside: avoid; }
+.rd-skillcat-name { font-size: calc(var(--fs) * 1); font-weight: 600; color: var(--c-primary); margin: 0.45em 0 0.1em; }
+.rd-skillcat-items { margin: 0; color: #2b2b2b; }
+
+/* ---------- publications ---------- */
+.rd-pubs { margin: 0; padding-inline-start: 1.3em; display: flex; flex-direction: column; gap: 0.45em; }
+.rd-pub li, li.rd-pub { break-inside: avoid; }
+.rd-pub-title { font-weight: 600; color: var(--c-primary); }
+.rd-pub-year { color: var(--c-secondary); }
+
+/* ---------- custom ---------- */
+.rd-custom-lead { color: var(--c-secondary); }
+
+/* ---------- footer ---------- */
+.rd-footer {
+  position: absolute;
+  bottom: 4mm;
+  inset-inline: 0;
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  font-size: calc(var(--fs) * 0.85);
+  color: var(--c-secondary);
+}
+.rd-root[data-footer="none"] .rd-footer { display: none; }
+
+/* ============================================================
+   Print — exact A4/Letter, no shadows, embedded fonts
+   ============================================================ */
+
+@media print {
+  html, body {
+    background: #fff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .no-print { display: none !important; }
+  .rd-page {
+    width: auto;
+    min-height: 0;
+    box-shadow: none !important;
+    margin: 0 !important;
+  }
+  .rd-page[data-page="letter"] { page: letter; }
+  a.rd-link { color: inherit; text-decoration: none; border-bottom: none; }
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+@page letter {
+  size: Letter;
+  margin: 0;
+}

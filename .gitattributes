@@ -1,0 +1,9 @@
+# Normalize line endings in the repository; detect binary files explicitly.
+* text=auto eol=lf
+
+*.png binary
+*.ico binary
+*.ttf binary
+*.woff2 binary
+*.jpg binary
+*.webp binary

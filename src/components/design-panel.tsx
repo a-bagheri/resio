@@ -2,6 +2,7 @@
 
 import type { Resume, DesignSettings } from "@/lib/types";
 import { getTemplate, TEMPLATES, PALETTES } from "@/lib/templates";
+import { FONTS } from "@/lib/fonts";
 import { useStore } from "@/lib/store";
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
@@ -39,18 +40,6 @@ export const DesignPanel = ({ resume }: { resume: Resume }) => {
   const ats = getTemplate(d.templateId).ats;
   const atsLabel =
     ats === "friendly" ? t("atsFriendly") : ats === "partial" ? t("atsPartial") : t("atsNotRecommended");
-
-  const fontLabel = (f: string) => {
-    const faMap: Record<string, string> = {
-      vazirmatn: "وزیرمتن", inter: "Inter", georgia: "Georgia",
-      roboto: "Roboto", merriweather: "Merriweather",
-    };
-    const enMap: Record<string, string> = {
-      vazirmatn: "Vazirmatn", inter: "Inter", georgia: "Georgia",
-      roboto: "Roboto", merriweather: "Merriweather",
-    };
-    return lang === "fa" ? faMap[f] : enMap[f];
-  };
 
   return (
     <div className="space-y-5">
@@ -128,8 +117,10 @@ export const DesignPanel = ({ resume }: { resume: Resume }) => {
               value={d.fontFamily}
               onChange={(e) => set({ fontFamily: e.target.value as DesignSettings["fontFamily"] })}
             >
-              {["vazirmatn", "inter", "georgia", "roboto", "merriweather"].map((f) => (
-                <option key={f} value={f}>{fontLabel(f)}</option>
+              {FONTS.map((f) => (
+                <option key={f.id} value={f.id}>
+                  {lang === "fa" ? f.label.fa : f.label.en}
+                </option>
               ))}
             </select>
           </div>

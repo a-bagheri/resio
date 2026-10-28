@@ -19,7 +19,7 @@
 html, body {
   background: var(--bg);
   color: var(--text);
-  font-family: Vazirmatn, "Segoe UI", Tahoma, sans-serif;
+  font-family: var(--font-vazirmatn), "Segoe UI", Tahoma, sans-serif;
   font-size: 14px;
 }
 

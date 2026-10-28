@@ -1,169 +1,169 @@
+<div dir="rtl" align="center">
+
 # Resio
 
-A bilingual (Persian/English) resume and CV builder for technical, engineering
-and academic professionals. Resio runs entirely in the browser — there is no
-backend, no account system, and no data ever leaves the user's device.
+**رزومه‌ساز دوزبانهٔ فارسی و انگلیسی — کاملاً در مرورگر، بدون سرور، بدون ثبت‌نام**
 
-## Key features
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-20232A?logo=react&logoColor=61DAFB)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Deploy](https://github.com/a-bagheri/resio/actions/workflows/deploy.yml/badge.svg)](https://github.com/a-bagheri/resio/actions/workflows/deploy.yml)
+[![License](https://img.shields.io/badge/License-ISC-8A2BE2)](package.json)
 
-- **Bilingual by design** — every field stores separate Persian and English
-  values (`{fa, en}`), never mixed. Independent RTL/LTR rendering per output
-  language, with a live A4 preview that switches between the two.
-- **16 templates** (minimal, modern, professional, engineering, technical,
-  academic, research, executive, compact, creative, elegant, graduate,
-  startup, designer, classic, medical), each with an ATS-compatibility
-  rating.
-- **20 built-in sections** — personal info, summary, skills (with 18
-  engineering category presets), experience, education, projects, research,
-  publications, conferences, certifications, awards, languages (CEFR),
-  courses, volunteer work, memberships, teaching, patents, interests,
-  hobbies, references — plus unlimited custom sections.
-- **Profession starter packs** — at creation time, sample content and skill
-  categories adapt to the selected field (software, electrical, civil,
-  mechanical, medical, academic) so users never start from a blank page.
-  Every editor field also carries an example placeholder.
-- **Completeness meter** — a weighted checklist in the editor (missing
-  contact info, short summary, unquantified achievements, thin skills,
-  estimated page count); each item links straight to its section.
-- **Exports** — PDF (dedicated print route with exact A4/Letter geometry),
-  Word (`.docx`, generated client-side with proper RTL support), single-file
-  HTML, XeLaTeX packages for both languages, and validated JSON for backup
-  and migration.
-- **Editing comfort** — drag-and-drop reordering of sections and entries,
-  per-section show/hide, autosave with a save-status indicator, Gregorian or
-  Jalali dates, Persian digits, photo and icon toggles.
+🔗 **[نسخهٔ آنلاین — a-bagheri.github.io/resio](https://a-bagheri.github.io/resio/)**
 
-## Data and privacy
+</div>
 
-Resio stores everything in the browser's `localStorage` on the device it runs
-on. **No data is stored on GitHub or any server**, and nothing is transmitted
-anywhere.
+<div dir="rtl">
 
-On the hosted GitHub Pages version this means clearing browser data or
-switching devices loses the data — export a backup (Settings → Backup) first.
-On a local clone the data persists on that machine. To move data between the
-web version and a local copy, export a backup from one and restore it in the
-other.
+Resio یک رزومه‌ساز دوزبانه برای متخصصان فنی، مهندسی و دانشگاهی است که به‌طور کامل در مرورگر اجرا می‌شود؛ بدون بک‌اند، بدون حساب کاربری و بدون اینکه حتی یک بایت از داده‌های شما دستگاه‌تان را ترک کند. هر فیلد هم‌زمان دو مقدار مستقل فارسی و انگلیسی دارد و خروجی نهایی برای هر زبان با چیدمان درست (راست‌به‌چپ یا چپ‌به‌راست) تولید می‌شود.
 
-## Tech stack
+## ✨ ویژگی‌های اصلی
 
-- [Next.js 15](https://nextjs.org/) (App Router) and [React 19](https://react.dev/)
-- [TypeScript 5](https://www.typescriptlang.org/)
-- [Tailwind CSS 4](https://tailwindcss.com/)
-- [Zustand 5](https://github.com/pmndrs/zustand) for state management
-- [Zod 4](https://zod.dev/) for import validation
-- [docx](https://github.com/dolanmiu/docx) and
-  [JSZip](https://stuk.github.io/jszip/) for client-side export generation
+- **دوزبانه از پایه** — هر فیلد دو مقدار جداگانهٔ `{fa, en}` ذخیره می‌کند و هیچ‌گاه مقادیر دو زبان با هم ترکیب نمی‌شوند؛ رندر RTL/LTR مستقل برای هر زبان خروجی، همراه با پیش‌نمایش زندهٔ A4 که با یک کلیک بین دو زبان جابه‌جا می‌شود.
+- **۱۶ قالب آماده** — از مینیمال و مدرن تا دانشگاهی و اجرایی؛ هر قالب همراه با امتیاز سازگاری با سیستم‌های ATS.
+- **۲۰ بخش استاندارد** — اطلاعات شخصی، خلاصه، مهارت‌ها (با ۱۸ دستهٔ پیش‌فرض مهندسی)، سوابق شغلی، تحصیلات، پروژه‌ها، پژوهش‌ها، مقالات، کنفرانس‌ها، گواهینامه‌ها، افتخارات، زبان‌ها (با سطح CEFR)، دوره‌ها، کار داوطلبانه، عضویت‌ها، تدریس، اختراعات، علایق، سرگرمی‌ها و معرف‌ها — به‌علاوه بخش‌های سفارشی نامحدود.
+- **شروع بدون صفحهٔ خالی** — در لحظهٔ ساخت رزومه، محتوای نمونه و دسته‌بندی مهارت‌ها متناسب با رشته انتخابی پر می‌شود (نرم‌افزار، برق، عمران، مکانیک، پزشکی، دانشگاهی) و هر فیلد ویرایش هم مثال آماده دارد.
+- **سنجهٔ تکمیل بودن** — چک‌لیست وزن‌دار از نقص‌های رایج (اطلاعات تماس ناقص، خلاصهٔ کوتاه، دستاوردهای بدون عدد، مهارت‌های کم، تخمین تعداد صفحات) که هر گزینه‌اش مستقیم به بخش مربوط لینک می‌شود.
+- **مدیریت چند رزومه** — داشبوردی برای فهرست رزومه‌ها، ساخت نسخهٔ جدید و ورود اطلاعات از پشتیبان.
+- **ویرایش راحت** — جابه‌جایی کشیدنی (Drag & Drop) بخش‌ها و آیتم‌ها، نمایش/مخفی‌کردن هر بخش، ذخیرهٔ خودکار با نشانگر وضعیت ذخیره، تقویم میلادی یا شمسی، اعداد فارسی و کلیدهای عکس و آیکون.
 
-## Getting started
+## 📤 خروجی‌ها
 
-Prerequisites: [Node.js](https://nodejs.org/) 18.18 or newer and npm.
+| فرمت | نحوهٔ تولید | نکته |
+| --- | --- | --- |
+| **PDF** | مسیر اختصاصی چاپ مرورگر | هندسهٔ دقیق A4 یا Letter، بدون لبه‌های اضافه |
+| **Word** (`docx`) | تولید کامل در مرورگر | پشتیبانی درست از راست‌به‌چپ |
+| **HTML** | تک‌فایل مستقل | قابل باز شدن روی هر دستگاهی |
+| **XeLaTeX** | بستهٔ آمادهٔ کامپایل | برای هر دو زبان فارسی و انگلیسی |
+| **JSON** | اعتبارسنجی‌شده با Zod | پشتیبان‌گیری، بازیابی و انتقال بین دستگاه‌ها |
+
+## 🔒 حریم خصوصی و نگهداری داده‌ها
+
+- همهٔ داده‌ها فقط در `localStorage` مرورگرِ همان دستگاه ذخیره می‌شود.
+- هیچ داده‌ای روی سرور یا GitHub ذخیره نمی‌شود و هیچ درخواستی به هیچ‌جا ارسال نمی‌شود.
+
+> [!WARNING]
+> در نسخهٔ تحت وب، پاک‌کردن داده‌های مرورگر یا تغییر دستگاه به معنای از دست رفتن داده‌هاست. پیش از هر کار حساس، از مسیر **تنظیمات ← پشتیبان‌گیری** یک خروجی JSON بگیرید. برای جابه‌جایی بین نسخهٔ وب و نسخهٔ محلی هم همین خروجی را از یک نسخه بگیرید و در نسخهٔ دیگر بازیابی کنید.
+
+## 🚀 شروع سریع
+
+پیش‌نیاز: [Node.js](https://nodejs.org/) نسخهٔ ۱۸٫۱۸ یا جدیدتر و npm.
 
 ```bash
-git clone https://github.com/<user>/<repo>.git
-cd <repo>
+git clone https://github.com/a-bagheri/resio.git
+cd resio
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). No configuration is
-required to develop or use the app locally.
+سپس [http://localhost:3000](http://localhost:3000) را باز کنید؛ برای اجرا و توسعهٔ محلی هیچ تنظیم اضافه‌ای لازم نیست.
 
-## Configuration
+## 🧰 دستورهای npm
 
-The app needs no environment variables. Two optional variables control the
-static build used for GitHub Pages (see [`.env.example`](.env.example)):
-
-| Variable | Purpose |
+| دستور | کارکرد |
 | --- | --- |
-| `NEXT_PUBLIC_BASE_PATH` | Base path of the deployed site, e.g. `/resio` for a project site; empty for a `user.github.io` repository. |
-| `STATIC_EXPORT` | Set to `1` to make `next build` produce a static export in `.next-export/`. |
+| `npm run dev` | سرور توسعه روی درگاه ۳۰۰۰ |
+| `npm run build` | بیلد تولیدی استاندارد (پوشهٔ `.next`) |
+| `npm run start` | سروکردن بیلد استاندارد |
+| `npm run build:static` | بیلد استاتیک برای GitHub Pages (پوشهٔ جداگانهٔ `.next-export`) |
+| `npm run lint` | بررسی کیفیت کد |
+| `npm run icons` | تولید دوبارهٔ آیکون‌های برنامه |
 
-## Development
+## ⚙️ تنظیمات
 
-```bash
-npm run dev            # development server on http://localhost:3000
-npx tsc --noEmit       # type-check the whole project
-```
+برنامه به هیچ متغیر محیطی الزامی نیاز ندارد. دو متغیر اختیاری، بیلد استاتیکِ مخصوص GitHub Pages را کنترل می‌کنند (نمونه در [`.env.example`](.env.example)):
 
-The repository ships an `.editorconfig`; use an editor plugin for consistent
-formatting.
+| متغیر | مقدار پیش‌فرض | توضیح |
+| --- | --- | --- |
+| `NEXT_PUBLIC_BASE_PATH` | خالی | زیرمسیر انتشار؛ برای مخزن پروژه‌ای مثل `/resio` و برای مخزن `<user>.github.io` خالی |
+| `STATIC_EXPORT` | خاموش | با مقدار `1` بیلد به‌جای خروجی سروری، خروجی استاتیک در `.next-export/` می‌سازد |
 
-## Build and production
+## 🌐 استقرار در GitHub Pages
 
-```bash
-npm run build          # standard production build (.next)
-npm run start          # serve the standard build
-```
+فایل [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) با هر push به شاخهٔ `main` بیلد استاتیک می‌گیرد و منتشر می‌کند:
 
-### GitHub Pages deployment
+1. یک‌بار از مسیر **Settings ← Pages ← Source ← GitHub Actions** فعالش کنید.
+2. همین؛ مسیر پایه (basePath) به‌طور خودکار از نام مخزن تشخیص داده می‌شود.
 
-`.github/workflows/deploy.yml` builds a static export and publishes it on
-every push to `main`. Enable it once via **Settings → Pages → Source → GitHub
-Actions**; the workflow detects the repository name and sets the base path
-automatically. To test the export locally:
+برای تست محلی خروجی استاتیک:
 
 ```bash
-export MSYS_NO_PATHCONV=1   # Git Bash on Windows only
+export MSYS_NO_PATHCONV=1   # فقط در Git Bash ویندوز لازم است
 STATIC_EXPORT=1 NEXT_PUBLIC_BASE_PATH=/resio npm run build:static
 node scripts/serve-out.mjs /resio 3460   # → http://localhost:3460/resio/
 ```
 
-## Testing and code quality
+## 🧱 پشتهٔ فناوری
 
-There is no automated test suite yet. Current checks:
+| لایه | فناوری |
+| --- | --- |
+| فریم‌ورک | [Next.js 15](https://nextjs.org/) (App Router) + [React 19](https://react.dev/) |
+| زبان | [TypeScript 5](https://www.typescriptlang.org/) |
+| استایل | [Tailwind CSS 4](https://tailwindcss.com/) |
+| مدیریت وضعیت | [Zustand 5](https://github.com/pmndrs/zustand) |
+| اعتبارسنجی ورودی | [Zod 4](https://zod.dev/) |
+| تولید Word | [docx](https://github.com/dolanmiu/docx) |
+| بسته‌بندی خروجی | [JSZip](https://stuk.github.io/jszip/) |
 
-```bash
-npx tsc --noEmit       # full type-check (must pass)
-npm run build:static   # production compile + static export
-```
-
-Adding an ESLint setup (`eslint` + `eslint-config-next`) and a test suite for
-`src/lib` would be welcome first contributions.
-
-## Project structure
+## 📁 ساختار پروژه
 
 ```
 src/
-├── app/                  # App Router pages
-│   ├── page.tsx          # dashboard (resume list, create/import)
-│   ├── editor/page.tsx   # section editor (?id=<resume>)
-│   ├── print/page.tsx    # print-to-PDF route (?id=<resume>)
-│   ├── templates/        # template gallery
-│   └── settings/         # language, backup/restore, reset
-├── components/           # editor panes, form primitives, document renderer
-└── lib/                  # domain logic
-    ├── types.ts          # bilingual data model and section registry
-    ├── store.ts          # zustand store + localStorage persistence
-    ├── factory.ts        # resume/section factories
-    ├── starter.ts        # generic starter content
-    ├── professions.ts    # per-field starter packs
-    ├── templates.ts      # template presets and palettes
-    ├── export-docx.ts    # Word export (docx)
-    ├── export-html.ts    # single-file HTML export
-    ├── latex.ts          # XeLaTeX export
-    ├── io.ts             # zod-validated JSON import/export
-    └── score.ts          # completeness meter
+├── app/                    # صفحات (App Router)
+│   ├── page.tsx            # داشبورد: فهرست رزومه‌ها، ساخت و ورود اطلاعات
+│   ├── editor/page.tsx     # ویرایشگر بخش‌ها (?id=<resume>)
+│   ├── print/page.tsx      # مسیر چاپ و PDF (?id=<resume>)
+│   ├── templates/          # گالری قالب‌ها
+│   └── settings/           # زبان، پشتیبان‌گیری/بازیابی، بازنشانی
+├── components/             # پنل‌های ویرایشگر، اجزای فرم، رندر سند رزومه
+├── styles/                 # استایل‌های سراسری و سند رزومه
+└── lib/                    # منطق دامنه
+    ├── types.ts            # مدل دادهٔ دوزبانه و فهرست بخش‌ها
+    ├── store.ts            # فروشگاه zustand + ذخیره‌سازی در localStorage
+    ├── factory.ts          # سازندهٔ رزومه و بخش‌ها
+    ├── professions.ts      # بسته‌های شروع متناسب با هر رشته
+    ├── templates.ts        # تنظیمات قالب‌ها و پالت‌های رنگی
+    ├── i18n.tsx            # دیکشنری دوزبانهٔ رابط کاربری
+    ├── export-docx.ts      # خروجی Word (docx)
+    ├── export-html.ts      # خروجی HTML تک‌فایلی
+    ├── latex.ts            # خروجی XeLaTeX
+    ├── io.ts               # ورود/خروج JSON با اعتبارسنجی zod
+    └── score.ts            # سنجهٔ تکمیل بودن رزومه
 ```
 
-## Localization
+## 🗣️ زبان و تاریخ
 
-The interface is fully bilingual: Persian (RTL, default) and English (LTR),
-switchable in the header and stored per browser. Resume content is authored
-in both languages independently and rendered/exported per output language.
-Dates follow the design settings — Gregorian, Jalali (Shamsi), or year-only —
-with Persian digits in Persian output. When contributing, keep Persian copy
-and localization keys intact; only developer-facing documentation is
-English-only.
+- رابط کاربری کاملاً دوزبانه است: فارسی (راست‌به‌چپ، پیش‌فرض) و انگلیسی (چپ‌به‌راست)؛ تغییر زبان از هدر و ذخیره در همان مرورگر.
+- محتوای رزومه در دو زبان به‌صورت مستقل نوشته می‌شود و برای هر زبان خروجی جداگانه رندر و اکسپورت می‌شود.
+- تاریخ‌ها بر اساس تنظیمات طراحی: میلادی، شمسی یا فقط سال — با اعداد فارسی در خروجی فارسی.
 
-## Contributing
+## ✅ بررسی کیفیت
 
-Issues and pull requests are welcome. Please keep changes focused, run
-`npx tsc --noEmit` and a production build before submitting, and preserve the
-bilingual (fa/en) behavior of both the UI and the generated documents.
+هنوز مجموعه‌تست خودکاری وجود ندارد؛ بررسی‌های فعلی:
 
-## License
+```bash
+npx tsc --noEmit        # بررسی نوع‌ها در کل پروژه (باید بدون خطا بگذرد)
+npm run build:static    # کامپایل تولیدی + خروجی استاتیک
+```
 
-Released under the ISC license as declared in
-[`package.json`](package.json). A dedicated `LICENSE` file should be added
-before the first public release.
+## 🤝 مشارکت
+
+Issue و Pull Request خوش‌آمدید. لطفاً:
+
+- تغییرات را متمرکز نگه دارید و پیش از ارسال، `npx tsc --noEmit` و یک بیلد تولیدی را بگذرانید.
+- رفتار دوزبانه (fa/en) را هم در رابط کاربری و هم در اسناد خروجی حفظ کنید.
+- افزودن ESLint (`eslint-config-next`) و مجموعه‌تست برای `src/lib` نقطهٔ شروع خوبی برای مشارکت است.
+
+## 📜 مجوز
+
+طبق [`package.json`](package.json) این پروژه با مجوز ISC منتشر شده است.
+
+</div>
+
+<div dir="rtl" align="center">
+
+ساخته‌شده با ❤️ توسط **[امیرحسین باقری](https://github.com/a-bagheri)** — [a-bagheri.github.io/resio](https://a-bagheri.github.io/resio/)
+
+</div>

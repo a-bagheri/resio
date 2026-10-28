@@ -4,19 +4,11 @@ import type { CSSProperties, ReactNode } from "react";
 import type { Resume, ResumeSection, OutputLang } from "@/lib/types";
 import { pick } from "@/lib/utils";
 import { getTemplate } from "@/lib/templates";
+import { fontStack } from "@/lib/fonts";
 
 // ============================================================
 // Design tokens → CSS custom properties
 // ============================================================
-
-export const fontStack = (family: string, serif: boolean): string => {
-  if (family === "vazirmatn") return `'Vazirmatn', 'Tahoma', sans-serif`;
-  if (family === "inter") return `'Inter', 'Vazirmatn', 'Segoe UI', sans-serif`;
-  if (family === "roboto") return `'Roboto', 'Vazirmatn', 'Segoe UI', sans-serif`;
-  if (family === "georgia") return `Georgia, 'Vazirmatn', serif`;
-  if (family === "merriweather") return `'Merriweather', Georgia, 'Vazirmatn', serif`;
-  return serif ? `Georgia, 'Vazirmatn', serif` : `'Vazirmatn', sans-serif`;
-};
 
 export const designVars = (r: Resume): CSSProperties => {
   const d = r.design;
@@ -30,7 +22,7 @@ export const designVars = (r: Resume): CSSProperties => {
     ["--lh" as never]: String(d.lineHeight),
     ["--pad" as never]: `${d.margin}mm`,
     ["--sec-gap" as never]: `${d.sectionSpacing}px`,
-    ["--font" as never]: fontStack(d.fontFamily, tpl.serif),
+    ["--font" as never]: fontStack(d.fontFamily),
   };
 };
 

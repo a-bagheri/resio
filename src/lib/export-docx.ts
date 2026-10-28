@@ -4,6 +4,7 @@ import { pick, toFaDigits, formatDate, downloadBlob, sanitizeFilename } from "./
 import { chipList } from "./latex";
 import { formatDateRange, sectionHasContent } from "./content";
 import { EMPLOYMENT_TYPE_LABELS, LEVEL_LABELS } from "./labels";
+import { getFont } from "./fonts";
 
 // ============================================================
 // Word (DOCX) export — built client-side with the `docx` library
@@ -13,14 +14,6 @@ import { EMPLOYMENT_TYPE_LABELS, LEVEL_LABELS } from "./labels";
 
 type Bi = { fa: string; en: string };
 
-
-const FONT_NAMES: Record<string, string> = {
-  vazirmatn: "Vazirmatn",
-  inter: "Inter",
-  georgia: "Georgia",
-  roboto: "Roboto",
-  merriweather: "Merriweather",
-};
 
 // A4 in twips; 1mm ≈ 56.7 twips
 const PAGE_TW = { a4: { w: 11906, h: 16838 }, letter: { w: 12240, h: 15840 } };
@@ -36,7 +29,8 @@ export const buildDocxBlob = async (r: Resume, L: OutputLang): Promise<Blob> => 
   const d = r.design;
   const p = r.personal;
   const df = d.dateFormat;
-  const bodyFont = fa ? "Vazirmatn" : (FONT_NAMES[d.fontFamily] || "Calibri");
+  // Persian docs keep Vazirmatn (guaranteed Arabic-script coverage in Word)
+  const bodyFont = fa ? "Vazirmatn" : getFont(d.fontFamily).docx;
   const primary = d.primary.replace("#", "");
   const secondary = d.secondary.replace("#", "");
   const accent = d.accent.replace("#", "");

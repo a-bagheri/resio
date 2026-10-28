@@ -1,6 +1,7 @@
 import type { Resume, OutputLang, ResumeSection } from "./types";
 import { pick, toFaDigits, formatDate, downloadBlob, sanitizeFilename } from "./utils";
 import { chipList } from "./latex";
+import { getFont } from "./fonts";
 import { formatDateRange, sectionHasContent } from "./content";
 import { EMPLOYMENT_TYPE_LABELS, LEVEL_LABELS } from "./labels";
 
@@ -14,14 +15,6 @@ type Bi = { fa: string; en: string };
 const esc = (s: string): string =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-
-const FONT_STACKS: Record<string, string> = {
-  vazirmatn: "'Vazirmatn', Tahoma, sans-serif",
-  inter: "'Inter', 'Segoe UI', Arial, sans-serif",
-  georgia: "Georgia, 'Times New Roman', serif",
-  roboto: "'Roboto', Arial, sans-serif",
-  merriweather: "'Merriweather', Georgia, serif",
-};
 
 const bullets = (v: string): string => {
   const items = v.split(/\n|•/).map((x) => x.trim()).filter(Boolean);
@@ -49,7 +42,7 @@ export const buildResumeHtml = (r: Resume, L: OutputLang): string => {
   const p = r.personal;
   const df = d.dateFormat;
   const dir = fa ? "rtl" : "ltr";
-  const font = fa ? FONT_STACKS.vazirmatn : (FONT_STACKS[d.fontFamily] || FONT_STACKS.inter);
+  const font = getFont(d.fontFamily).htmlStack;
   const secLabel = (faL: string, enL: string) => (fa ? faL : enL);
 
   const contacts: string[] = [];
@@ -255,8 +248,9 @@ export const buildResumeHtml = (r: Resume, L: OutputLang): string => {
   }
 
   const title = esc(pick(p.name, L));
-  const fontsHref =
-    "https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap";
+  const fontsHref = getFont(d.fontFamily).googleFonts
+    ? "https://fonts.googleapis.com/css2?family=" + getFont(d.fontFamily).googleFonts + "&display=swap"
+    : null;
 
   return `<!DOCTYPE html>
 <html lang="${fa ? "fa" : "en"}" dir="${dir}">
@@ -265,7 +259,7 @@ export const buildResumeHtml = (r: Resume, L: OutputLang): string => {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${title} — ${esc(fa ? "رزومه" : "Resume")}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="${fontsHref}">
+${fontsHref ? `<link rel="stylesheet" href="${fontsHref}">` : ""}
 <style>
   :root {
     --primary: ${d.primary};

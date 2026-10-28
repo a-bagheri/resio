@@ -382,7 +382,15 @@ export interface ResumeSection {
 export type PageSize = "a4" | "letter";
 export type HeaderStyle = "banner" | "sidebar" | "centered" | "split" | "minimal";
 export type FooterStyle = "none" | "page-number" | "name-page";
-export type FontChoice = "vazirmatn" | "inter" | "georgia" | "roboto" | "merriweather";
+export type FontChoice =
+  | "vazirmatn"
+  | "estedad"
+  | "shabnam"
+  | "notonaskh"
+  | "inter"
+  | "roboto"
+  | "georgia"
+  | "merriweather";
 
 export interface DesignSettings {
   templateId: string;

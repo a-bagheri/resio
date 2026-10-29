@@ -2,7 +2,7 @@
 
 # Resio
 
-**A bilingual (Persian/English) resume & CV builder that runs entirely in your browser — no server, no account.**
+**A bilingual (Persian/English), ATS-friendly resume & CV builder that runs entirely in your browser — no server, no account.**
 
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19-20232A?logo=react&logoColor=61DAFB)](https://react.dev/)

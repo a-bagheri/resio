@@ -2,7 +2,7 @@
 
 # Resio
 
-**رزومه‌ساز دوزبانهٔ فارسی و انگلیسی — کاملاً در مرورگر، بدون سرور، بدون ثبت‌نام**
+**رزومه‌ساز دوزبانهٔ فارسی و انگلیسی، سازگار با ATS — کاملاً در مرورگر، بدون سرور، بدون ثبت‌نام**
 
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19-20232A?logo=react&logoColor=61DAFB)](https://react.dev/)
